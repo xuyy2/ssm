@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 配置常量 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+    
+    <!-- 定义全局性的配置信息 -->
+    <package name="default" extends="struts-default">
+      <!-- 配置全局性的Result信息 -->
+      <global-results>
+        <!-- 公共登录页面 -->
+		<result name="login">/login.jsp</result>
+		<!-- 全局错误页面-->
+		<result name="error">/500.jsp</result>
+		<!-- 全局异常页面-->
+		<result name="exception">/exception.jsp</result>
+      </global-results>
+      
+      <!-- 配置全局异常页面 -->
+      <global-exception-mappings>
+        <exception-mapping result="exception" exception="java.lang.RuntimeException"></exception-mapping>
+      </global-exception-mappings>
+    </package>
+	
+	<!-- 将拆分的配置文件包含进来 -->
+	<include file="struts-employee.xml"></include>
+</struts>

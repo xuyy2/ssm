@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cn.hzhy.oa.entity.Role" table="roles" schema="hzhy">
+    <!-- 配置对象标识符和数据库表主键之间的映射关系 -->
+    <id name="roleId" column="role_id" type="java.lang.Integer">
+      <!-- 主键生成策略 -->
+      <generator class="sequence">
+        <param name="sequence">seq_roles</param>
+      </generator>
+    </id>
+    <property name="roleName" column="role_name" type="java.lang.String"></property>
+    <property name="roleDesc" column="role_desc" type="java.lang.String"></property>
+    <property name="status" column="status" type="java.lang.Integer"></property>  
+    
+    <!-- 配置角色到员工的一对多关联 -->
+    <set name="employees" inverse="true" cascade="save-update" order-by="emp_id desc" >
+      <!-- 配置外键 -->
+      <key column="role_id"></key>
+      <one-to-many class="cn.hzhy.oa.entity.Employee" />
+    </set>
+    
+    <!-- 配置角色到权限的多对多关联 -->
+    <set name="rights" table="REF_ROLES_RIGHTS" inverse="true" cascade="save-update" order-by="ref_right_id">	<!-- 配置关联表 -->
+      <!-- 配置关联到自身的外键 -->
+      <key column="ref_role_id"></key>  
+      <!-- 配置关联对象的类型以及关联表中对应关联对象的外键 -->
+      <many-to-many class="cn.hzhy.oa.entity.Right" column="ref_right_id"></many-to-many>
+    </set>    
+  </class>
+</hibernate-mapping>

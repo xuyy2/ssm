@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+  <class name="cn.hzhy.students.entity.Employee" table="employee" schema="hzhy">
+    <!-- 配置对象标识符和数据库表主键之间的映射关系 -->
+    <id name="empId" column="emp_id" type="java.lang.Integer">
+      <!-- 主键生成策略 -->
+      <generator class="sequence">
+        <param name="sequence">seq_employee</param>
+      </generator>
+    </id>
+    <property name="empName" column="emp_name" type="java.lang.String"></property>
+    <property name="password" column="password" type="java.lang.String"></property>
+   <!--  <property name="sex" column="sex" type="java.lang.Integer"></property>
+    <property name="birthday" column="birthday" type="java.util.Date"></property>
+    <property name="status" column="status" type="java.lang.Integer"></property>     -->
+    <!-- <property name="roleId" column="role_id" type="java.lang.Integer"></property> -->
+    <!-- 配置员工到角色的多对一关联 -->
+    <!-- <many-to-one name="role" column="role_id" class="cn.hzhy.oa.entity.Role"></many-to-one> -->
+  </class>
+  
+  <query name="getEmployeeById">
+    <![CDATA[
+	    from Employee where empId=:empId
+    ]]>  
+  </query>
+</hibernate-mapping>

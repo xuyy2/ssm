@@ -1,0 +1,6 @@
+body{margin:0px;padding:0px;}
+#header,#main{width:960px;margin:0px auto;padding:0px;}
+#header{height:30px;line-height:30px; padding-top:60px; }
+#main{height:800px;border:1px solid #00F;}
+#sidebar{width:200px;height:100%;float:left; background: #ccc;}
+#content{width:760px;height:100%;float:left; background: #F98763;}
