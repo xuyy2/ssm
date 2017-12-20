@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--在配置文件中配置<properties/>属性，用于加载属性文件：-->
+    <!--<properties resource="db.properties"/>-->
+
+    <!--主要用于配置改变MyBatis运行时行为的属性，比如配置日志-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--主要用于给类取别名，可以减少类完全限定名的冗余 -->
+    <typeAliases>
+        <!-- 定义单个别名   -->
+        <!-- <typeAlias type="com.domain.User" alias="user"/>  -->
+        <package name="com.yiyi.crud.bean"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--分页参数合理化  -->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+
+</configuration>
