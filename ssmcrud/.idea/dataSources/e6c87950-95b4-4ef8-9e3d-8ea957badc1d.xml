@@ -100,7 +100,7 @@
     </column>
     <column id="29" parent="10" name="gender">
       <Position>3</Position>
-      <DataType>char(4)|0</DataType>
+      <DataType>char(10)|0</DataType>
     </column>
     <column id="30" parent="10" name="email">
       <Position>4</Position>
